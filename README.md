@@ -7,11 +7,15 @@ JANUS is a new training strategy to enhance the model performance in both AR and
 
 The problem of distribution discrepancy:
 <!-- ![](janus_head.png){:height="50%" width="50%"} -->
- <img src="janus_head.png" width = "500" height = "350" alt="distribution discrepancy" align=center />
+<div  align="center">  
+ <img src="janus_head.png" width = "300" height = "200" alt="distribution discrepancy" align=center />
+</div>
 
 JANUS:
-![](janus_overview.png)
-
+<!-- ![](janus_overview.png) -->
+<div  align="center">  
+ <img src="janus_overview.png" width = "400" height = "400" alt="distribution discrepancy" align=center />
+</div>
 
 ## Getting Started
 
