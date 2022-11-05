@@ -14,7 +14,7 @@ The problem of distribution discrepancy:
 JANUS:
 <!-- ![](janus_overview.png) -->
 <div  align="center">  
- <img src="janus_overview.png" width = "800" height = "350" alt="distribution discrepancy" align=center />
+ <img src="janus_overview.png" width = "800" height = "350" alt="JANUS" align=center />
 </div>
 
 ## Getting Started
