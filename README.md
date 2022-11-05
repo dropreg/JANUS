@@ -6,7 +6,7 @@ This repository contains the code for our EMNLP2022 paper [JANUS: Joint Autoregr
 JANUS is a new training strategy to enhance the model performance in both AR and NAR manner simultaneously and effectively alleviate the problem of distribution discrepancy.
 
 The problem of distribution discrepancy:
-![](janus_head.png)
+![](janus_head.png){:height="50%" width="50%"}
 
 JANUS:
 ![](janus_overview.png)
