@@ -4,12 +4,12 @@ tgt=en
 
 export CUDA_VISIBLE_DEVICES=0,1
 
-data_dir=/data1/lxb/lxb/fairseq/iwslt14.tokenized.de-en/data-bin/
-save_dir=/data1/lxb/lxb/checkpoint/janus/cmlm_baseline
-
+root_dir=/opt/data/private/data/nmt_data
+data_dir=$root_dir/iwslt14.tokenized.de-en/data-bin
+save_dir=$root_dir/ckpt/
 
 fairseq-train $data_dir \
-    --user-dir examples/janus/src \
+    --user-dir janus/src \
     --task janus_translation \
     --arch janus_transformer_iwslt_de_en \
     --share-all-embeddings \

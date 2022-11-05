@@ -2,13 +2,15 @@
 src=de
 tgt=en
 
-export CUDA_VISIBLE_DEVICES=6
+export CUDA_VISIBLE_DEVICES=0
 
-data_dir=/data1/lxb/dataset/small_nmt_data/iwslt_data/de-en_file/databin
-save_dir=/data1/lxb/nmt_checkpoint/janus/ar_baseline
+root_dir=/opt/data/private/data/nmt_data
+data_dir=$root_dir/iwslt14.tokenized.de-en/data-bin
+save_dir=$root_dir/ckpt/
+
 
 fairseq-train $data_dir \
-    --user-dir examples/janus/src \
+    --user-dir janus/src \
     --task janus_translation \
     --arch janus_transformer_iwslt_de_en \
     --share-all-embeddings \

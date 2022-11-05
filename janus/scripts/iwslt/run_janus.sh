@@ -4,18 +4,18 @@ tgt=en
 
 export CUDA_VISIBLE_DEVICES=0,1
 
-data_dir=/opt/data/private/data/iwslt14.tokenized.de-en/data-bin/
-save_dir=/opt/data/private/ckpt/janus/distill_baseline_seed2048
+root_dir=/opt/data/private/data/nmt_data
+data_dir=$root_dir/iwslt14.tokenized.de-en/data-bin
+save_dir=$root_dir/ckpt/
 
-# --restore-file $restore_file \
-# --reset-optimizer --reset-dataloader --reset-meters \
+
 fairseq-train $data_dir \
-    --user-dir examples/janus/src \
+    --user-dir janus/src \
     --task janus_translation \
     --arch janus_transformer_iwslt_de_en \
     --share-all-embeddings \
     --dropout 0.3 \
-    --criterion janus_distill_loss \
+    --criterion janus_loss \
     --optimizer adam --adam-betas '(0.9,0.98)' --lr 0.0005 -s $src -t $tgt \
     --max-tokens 4096 \
     --decoder-learned-pos \

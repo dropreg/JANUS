@@ -1,9 +1,9 @@
 
-# training bart model with 22g BERT data
-DATA_PATH=/data1/lxb/huawei_pretrain/bert_data_22g/train/data-bin
-# DATA_PATH=/data1/lxb/huawei_pretrain/gpt_160g/
-MODEL_PATH=/data1/lxb/huawei_pretrain/pretraining/ckpt/janus/kl_22g
-BART_PATH=/data1/lxb/huawei_pretrain/pretraining/bart.base/model.pt
+
+ROOT_PATH=/opt/data/private/data/nmt_data
+DATA_PATH=$ROOT_PATH/pretrain/160g/
+MODEL_PATH=$ROOT_PATH/pretrain/ckpt/janus/
+BART_PATH=$ROOT_PATH/pretrain/bart.base/model.pt
 
 TOTAL_NUM_UPDATE=1000000
 WARM_UPDATE=10000
@@ -14,7 +14,7 @@ python -m torch.distributed.launch --nproc_per_node=8 --master_port=1234 \
     $(which fairseq-train) $DATA_PATH \
     --restore-file $BART_PATH \
     --reset-optimizer --reset-dataloader --reset-meters \
-    --user-dir examples/janus_pretrain/src \
+    --user-dir janus_pretrain/src \
     --arch janus_bart_base \
     --task janus_denoising \
     --replace-length 1 \

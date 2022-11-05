@@ -65,9 +65,6 @@ class JanusLabelSmoothedCrossEntropyCriterion(FairseqCriterion):
         query_loss, query_nll_loss = self.label_smooth_loss(query_out[query_m], target[target_mask])
         length_loss = self.length_loss(length_out, length_tgt)
         
-        # nar_loss = content_loss + 0.1 * length_loss
-        # nar_nll_loss = content_nll_loss
-        
         ar_distill_mask = ~sample["ar_input"]["ar_mask"]
         ar_kl_loss = self.compute_cross_kl_loss(ar_out[ar_distill_mask], content_out[content_m])
         ar_loss += 1 * ar_kl_loss

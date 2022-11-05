@@ -153,8 +153,8 @@ class IterativeRefinementGenerator(object):
                 prev_decoder_out, self.beam_size
             )
             bsz = bsz * self.beam_size
-
-        sent_idxs = torch.arange(bsz)
+        
+        sent_idxs = torch.arange(bsz).to(src_tokens)
         prev_output_tokens = prev_decoder_out.output_tokens.clone()
 
         if self.retain_history:

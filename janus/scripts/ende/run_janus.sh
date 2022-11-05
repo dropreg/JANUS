@@ -2,26 +2,25 @@
 src=de
 tgt=en
 
-export CUDA_VISIBLE_DEVICES=4,5,6,7
+export CUDA_VISIBLE_DEVICES=0,1,2,3
 
-# data_dir=/data1/lxb/en_de_rawdata
-# data_dir=/data1/lxb/wmt16.en-de.raw/data-bin
-# save_dir=/data1/lxb/nmt_checkpoint/janus/janus_distill_deen_kl13_new
-data_dir=/data1/lxb/wmt14_ende/data-bin
-save_dir=/data1/lxb/nmt_checkpoint/janus/janus_distill_deen_kl13_new
+root_dir=/opt/data/private/data/nmt_data
+data_dir=$root_dir/wmt14_ende/data-bin
+save_dir=$root_dir/ckpt/
+
 
 python -m torch.distributed.launch --nproc_per_node=4 --master_port=1234 \
     $(which fairseq-train)  $data_dir \
     --ddp-backend=no_c10d \
     --distributed-backend 'nccl' \
     --distributed-no-spawn \
-    --user-dir examples/janus/src \
+    --user-dir janus/src \
     --task janus_translation \
     --arch janus_transformer \
     -s $src -t $tgt \
     --share-all-embeddings \
     --dropout 0.2 \
-    --criterion janus_distill_loss \
+    --criterion janus_loss \
     --optimizer adam --adam-betas '(0.9,0.98)' --lr 0.0007 \
     --max-tokens 8192 \
     --update-freq 4 \
