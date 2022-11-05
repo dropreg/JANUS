@@ -45,7 +45,7 @@ bash janus/scripts/iwslt/run_janus_nar_inf.sh
 bash janus/scripts/iwslt/run_janus_ar_inf.sh
 # results:
 +---------+-------------+-------------+
-| IWSLT14 | De->En (AR) | En->De (NAR)|
+| IWSLT14 | De->En (AR) | De->En (NAR)|
 +---------+-------------+-------------+
 | -       |    37.24    |    34.21    |
 +---------+-------------+-------------+
